@@ -1,0 +1,11 @@
+        "football" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=1&leagues=%5B1796,1595,1767,1322,1364,1757,2275,619,911,779,570,1908,1700,1299,514,950,1253,292,315,261,541,1187,429,335,684,317,197,65,553,685,297,114,70,224,382,922,240,852,486,1777,412,916,96,607,891,428,123,304,589,862,551,530,273,349,415,420,216,38,543,600,156,108,130,41,896,1146,208,260%5D&boost=%5B1796,1146%5D",
+        "tennis" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=2&leagues=%5B2300,1787,1483,1212,1211,1,974,1570,1696,1154,1153,1949,1926%5D&boost=%5B%5D",
+        "basketball" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=3&leagues=%5B178,66,1717,1231,480,1208,1488,138,787,376,446,1844,466,154,1845%5D&boost=%5B%5D",
+        "rugby" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=12&leagues=%5B383,202,147,1477,2014,1249%5D&boost=%5B%5D",
+        "baseball" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=6&leagues=%5B1132%5D&boost=%5B%5D",
+        "boxe" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=7&leagues=%5B2034,2033%5D&boost=%5B%5D",
+        "american football" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=16&leagues=%5B643%5D&boost=%5B%5D",
+        "handball" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=9&leagues=%5B482,555,804,57,378,231,1069,730%5D&boost=%5B%5D",
+        "ice hockey" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=10&leagues=%5B1594,1440,1217,1766,1224,1391,1216,1854,1814,1566%5D&boost=%5B%5D",
+        "mma" : "https://parisportif.pmu.fr/home/wrapper/events?activeSportId=26&leagues=%5B203%5D&boost=%5B%5D",
+        "volleyball" :

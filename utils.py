@@ -1,5 +1,5 @@
 name_urls = {
     "Winamax" : "http://www.winamax.fr/paris-sportifs", 
-    "PMU" : "https://parisportif.pmu.fr/home/wrapper/dashboard?activeSportId=1"
+    "PMU" : "https://sports.pmu.fr/sportsbook/rest/v2/tree/?ln=fr",
 }
 
