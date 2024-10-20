@@ -2,8 +2,8 @@ from dataclasses import dataclass
 import requests
 import json
 import re
-from Website import Website
-from Bet import Bet
+from Classes.Website import Website
+from Classes.Bet import Bet
 
 @dataclass
 class Winamax(Website):
@@ -33,17 +33,21 @@ class Winamax(Website):
                 continue
 
             ## exclude alternative bets
-            if bet["isAlternativeMainBet"] == "true":
+            if bet["isAlternativeMainBet"] == "true" or "specialBetValue" in bet:
                 continue
             
             # Teams name
             match_id = bet["matchId"]
             title = matches[str(match_id)]["title"]
-            team1, team2 = title.split(" - ")
+            try:
+                team1, team2 = title.split(" - ")
+            except BaseException:
+                print(title)
+                continue
 
             #sport name
             sport_id = matches[str(match_id)]["sportId"]
-            sport_name = sports[str(sport_id)]["sportName"]
+            sport_name = sports[str(sport_id)]["sportName"].lower()
 
             # odds
             bet_odds = []
@@ -54,10 +58,24 @@ class Winamax(Website):
 
             # sport already created
             if sport_name in self.organised_page_content:
-                self.organised_page_content[sport_name].append({"team1" : team1, "team2" : team2, "odds" : bet_odds, "odds_descriptions" : bet_descriptions})
+                self.organised_page_content[sport_name].append({
+                    "team1" : team1,
+                    "team2" : team2,
+                    "odds" : bet_odds,
+                    "odds_descriptions" : bet_descriptions,
+                    "website" : "winamax",
+                    "matched" : False
+                })
             # sport not created
             else:
-                self.organised_page_content[sport_name] = [{"team1" : team1, "team2" : team2, "odds" : bet_odds, "odds_descriptions" : bet_descriptions}]
+                self.organised_page_content[sport_name] = [{
+                    "team1" : team1,
+                    "team2" : team2,
+                    "odds" : bet_odds,
+                    "odds_descriptions" : bet_descriptions,
+                    "website" : "winamax",
+                    "matched" : False
+                }]
 
     def organise_bets(self):
         super().organise_bets()

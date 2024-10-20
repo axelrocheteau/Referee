@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Bet import Bet
+from Classes.Bet import Bet
 
 @dataclass
 class Website:

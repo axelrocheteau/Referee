@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 import requests
 import json
-from Website import Website
-from Bet import Bet
+from Classes.Website import Website
+from Classes.Bet import Bet
 
 
 @dataclass
@@ -19,9 +19,9 @@ class PMU(Website):
             "baseball",
             "boxe",
             "football américain",
-            "handball"
-            "hockey sur glace"
-            "mma"
+            "handball",
+            "hockey sur glace",
+            "mma",
             "volleyball"
         ]
 
@@ -43,7 +43,7 @@ class PMU(Website):
                 continue
 
             sports.append({"id": sport["id"], "name": sport["name"]})
-            league_ids.extend([(sport["name"], league["id"]) for category in sport["categories"] for league in category["leagues"] if league["matchCount"] >= 8])
+            league_ids.extend([(sport["name"].lower(), league["id"]) for category in sport["categories"] for league in category["leagues"] if league["matchCount"] >= 3])
 
         ## request all leagues
         for sport_name, league_id in league_ids:
@@ -69,15 +69,32 @@ class PMU(Website):
                         continue
                     
                     for outcome in odd["outcomes"]:
+                        if 'hcp' in outcome["outcome"]:
+                            continue
+                        
                         odds.append(outcome["oddValue"])
                         odds_descriptions.append(outcome["outcome"].replace('{$competitor1}', team1).replace('{$competitor2}', team2))
 
                 # sport already created
                 if sport_name in self.organised_page_content:
-                    self.organised_page_content[sport_name].append({"team1" : team1, "team2" : team2, "odds" : odds, "odds_descriptions" : odds_descriptions})
+                    self.organised_page_content[sport_name].append({
+                        "team1" : team1,
+                        "team2" : team2,
+                        "odds" : odds,
+                        "odds_descriptions" : odds_descriptions,
+                        "website" : "pmu",
+                        "matched" : False
+                    })
                 # sport not created
                 else:
-                    self.organised_page_content[sport_name] = [{"team1" : team1, "team2" : team2, "odds" : odds, "odds_descriptions" : odds_descriptions}]
+                    self.organised_page_content[sport_name] = [{
+                        "team1" : team1,
+                        "team2" : team2,
+                        "odds" : odds,
+                        "odds_descriptions" : odds_descriptions,
+                        "website" : "pmu",
+                        "matched" : False
+                    }]
 
 
     def organise_bets(self):
